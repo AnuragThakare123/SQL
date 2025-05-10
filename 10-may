@@ -1,0 +1,9 @@
+## selection query
+
+# In is a relacement of multiple Or, They both give same results
+
+select * from customer
+where city In ('Henderson','Seattle');
+
+select * from customer
+where city = 'Henderson' or city = 'Seattle';
