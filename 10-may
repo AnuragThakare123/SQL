@@ -7,3 +7,58 @@ where city In ('Henderson','Seattle');
 
 select * from customer
 where city = 'Henderson' or city = 'Seattle';
+------------------------------------------------------------ (13/05/25)-----------
+## Between 
+
+select customer_name,age from customer 
+where age Between 20 and 40;
+
+select customer_name,age from customer
+where age >= 20 and age <= 40;
+
+select customer_name,age from customer
+where age not between 20 and 30;
+
+select * from sales
+where order_date between '2015-09-01' and '2016-11-01';
+
+
+-----------------------------------------------------------
+# Like
+select * from customer where customer_name like 'A%';
+
+select * from customer where customer_name like 'A%';
+
+select * from customer where customer_name like '%Nelson'
+select * from customer where country like 'U%';
+
+select * from customer where customer_Name like '____ %';
+
+select * from customer where city not like 'S%';
+
+select * from customer where city like 'S%';
+
+----------------------------------------------------------------------------
+# Comments in Sql
+1) /* ajndkdk 
+djjj
+*/     ---> Multiline comment
+
+2) -- Single line comment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
