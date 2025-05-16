@@ -1,0 +1,19 @@
+// order by
+
+select * from customer;
+
+select * from customer where state = 'California' order by customer_name ASC;
+
+select * from customer where state = 'California' order by customer_name DESC;
+
+select * from customer order by city ASC, state DESC;
+select * from customer order by city asc, customer_name desc;
+
+
+select * from customer order by 4 asc;
+--------------------------------------------*****---------------------------------
+// Limit
+select * from customer 
+where State in ('Utah','Illinois')
+order by city Asc
+limit 50;
