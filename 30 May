@@ -1,0 +1,4 @@
+## AS - (Alis)
+
+
+select customer_id as "serial Number",customer_name as "English chutiye", age as customer_name from customer;
