@@ -1,0 +1,34 @@
+select * from sales;
+select * from customer;
+
+/* Sum */
+select sum(profit) as Total_Profit
+from sales;
+
+select sum(profit) as "total Profit"
+from sales;
+
+select sum(profit) as "profit Ki ma ki"
+from sales
+where product_id = 'FUR-CH-10000454';
+
+select Sum(profit)
+from sales;
+
+
+/* Avg */
+select avg(age) as Avg_Age
+from customer;
+
+select avg(sales * 0.10) As "Avg commission Value"
+from sales;
+
+/* Min_Max */
+select min(age) as "Kami Age"
+from Customer;
+
+select max(age)
+from customer;
+
+select min(profit) 
+from sales;
