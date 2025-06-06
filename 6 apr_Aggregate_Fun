@@ -23,6 +23,7 @@ from customer;
 select avg(sales * 0.10) As "Avg commission Value"
 from sales;
 
+
 /* Min_Max */
 select min(age) as "Kami Age"
 from Customer;
@@ -32,3 +33,20 @@ from customer;
 
 select min(profit) 
 from sales;
+
+
+
+/*----------*/ 
+/* yy-mm-dd */
+select min(sales) as "Minimum sales value"
+from sales
+where order_date between '2014-10-07' and '2015-10-07';
+
+
+select sales 
+from Sales
+where order_date between '2014-10-07' and '2015-10-07'
+order by sales asc;
+
+ select MAX(Amount),MIN(Amount)
+ from Orders;
