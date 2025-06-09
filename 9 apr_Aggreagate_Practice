@@ -1,0 +1,25 @@
+select * from sales;
+
+/* sum of all sales values*/
+select sum(sales) as "Total_SalesValue"
+from sales;
+
+select * from customer;
+
+/* Count of Number of customers in Cental region with age between 20 and 30 */
+select count(distinct customer_name) 
+from customer
+where region = 'Central' and age between 20 and 30;
+
+select count(customer_name) 
+from customer
+where region = 'North';
+
+select avg(age)
+from customer
+where region = 'East';
+
+select Max(age), Min (age)
+from customer
+where city = 'Philadelphia';
+
