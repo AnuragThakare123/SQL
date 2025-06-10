@@ -1,1 +1,35 @@
+select * from customer;
+
+select customer_name, avg(age)
+from customer
+group by customer_name;
+
+select state, avg(age)
+from customer
+group by state;
+
+select region,count(customer_id) as Customer_Count
+from customer
+group by region;
+
+select * from sales;
+
+select product_id, sum(quantity) as "total_quantity"
+from sales 
+group by product_id
+order by total_quantity desc;
+
+select * from customer;
+
+
+SELECT region, state, AVG(age) AS avg_age, COUNT(customer_id) AS Total_customer
+FROM customer
+GROUP BY region, state
+ORDER BY Total_customer DESC
+LIMIT 5;
+
+
+
+
+
 
