@@ -1,1 +1,15 @@
-hbfjjfkjkf
+select * from customer;
+
+select region,count(customer_id)
+from customer
+group by region
+having count(customer_id) >= 200;
+
+
+/* Where + Having */
+
+select region, count(customer_id)
+from customer
+where customer_name like 'A%'
+group by region
+having count(customer_id) >= 15;
