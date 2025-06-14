@@ -1,0 +1,59 @@
+select * from sales
+
+select product_id, sum(sales)
+from sales
+group by product_id
+order by sum(sales) desc;
+
+
+select product_id, sum(quantity) as "total quantity"
+from sales
+group by product_id;
+
+
+select product_id, sum
+
+
+select product_id,Max(sales) as Sales
+from sales
+group by product_id
+order by Sales desc
+limit 1;
+
+/* or */
+
+SELECT product_id, sales
+FROM sales
+ORDER BY sales DESC
+LIMIT 1;
+
+select product_id,Min(sales) as Sales
+from sales
+group by product_id
+order by Sales asc
+limit 1;
+
+select product_id, avg(sales) as Sales
+from sales
+group by product_id;
+
+
+
+select product_id,sum(sales),sum(quantity) as "total quantity", Max(sales) as Sales, Min(sales) as Sales,avg(sales)
+from sales
+group by product_id
+limit 1;
+
+
+
+select product_id,quantity
+from sales
+where quantity > 10
+
+
+
+
+
+
+
+
