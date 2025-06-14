@@ -1,0 +1,15 @@
+select * from customer;
+
+select *, case
+			 when age<30 then 'young'
+			 when age>60 then 'Senior Citizen'
+			 else 'Middle Aged'
+			 end as Age_category
+from customer;
+
+select age, case
+			 when age<30 then 'young'
+			 when age>60 then 'Senior Citizen'
+			 else 'Middle Aged'
+			 end as Age_category
+from customer;
