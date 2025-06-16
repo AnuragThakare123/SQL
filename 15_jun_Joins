@@ -60,9 +60,18 @@ select * from year_values;
 
 
 --Cross join---
+SELECT *
+FROM table1
+CROSS JOIN table2;
+
+
 select a.YYYY, b.MM
 from year_values as a, month_values as b
 order by a.YYYY, b.MM;
+
+select a.CustomerName, b.Product
+from Customers as a
+cross join Orders as b;
 
 
 
