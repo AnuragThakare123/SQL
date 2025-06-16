@@ -1,0 +1,13 @@
+--- Intersect--
+
+select customer_id from sales_2015
+Intersect
+select customer_id from customer_20_60
+
+
+Retrieve the Common Name from the Customers and Passengers tables.
+
+select CustomerName from Customers
+Intersect
+select PassengerName from Passengers
+
