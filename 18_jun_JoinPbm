@@ -1,0 +1,11 @@
+---- Retrieve the products ordered by 'John Doe' but not by ‘Jane Smith' from the ‘Orders’ table. ---
+
+select Product from Orders
+where CustomerID  = (select CustomerID
+from Customers
+where CustomerName = 'John Doe')
+except
+select Product from Orders
+where CustomerID  = (select CustomerID
+from Customers
+where CustomerName = 'Jane Smith')
