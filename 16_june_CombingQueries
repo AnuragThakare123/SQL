@@ -11,3 +11,10 @@ select CustomerName from Customers
 Intersect
 select PassengerName from Passengers
 
+--- Union---
+select Product
+from Orders1
+union
+select Product
+from Orders;
+
