@@ -9,3 +9,5 @@ select Product from Orders
 where CustomerID  = (select CustomerID
 from Customers
 where CustomerName = 'Jane Smith')
+
+------- New -----
