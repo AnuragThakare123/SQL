@@ -11,3 +11,47 @@ from Customers
 where CustomerName = 'Jane Smith')
 
 ------- New -----
+---- Retrieve the products ordered by 'John Doe' but not by ‘Jane Smith' from the ‘Orders’ table. ---
+
+select Product from Orders
+where CustomerID  = (select CustomerID
+from Customers
+where CustomerName = 'John Doe')
+except
+select Product from Orders
+where CustomerID  = (select CustomerID
+from Customers
+where CustomerName = 'Jane Smith')
+
+------- New -----
+Qu. 1)--- Find the total sales done in every state using the customer_20_60 and sales_2015 tables.
+Hint: Use JOIN and GROUP BY.---
+
+select c.state, sum(s.sales)
+from customer_20_60 as c
+join
+sales_2015 as s
+on s.customer_id =  c.customer_id
+group by c.state
+order by state
+
+
+-------
+Qu. 2) Get data containing:
+
+Product_id
+Product name
+Category
+Total sales value of that product
+Total quantity sold
+
+Use sales and product tables.
+
+ans. 
+select p.product_id, p.product_name, p.category,
+	   sum(s.sales) as total_sales_val, sum(s.quantity) as total_quant_sold
+from product as p
+join
+sales as s
+on s.product_id = p.product_id
+group by p.product_id,p.product_name, p.category;
