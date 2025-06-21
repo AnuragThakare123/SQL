@@ -1,0 +1,32 @@
+(using- SubQuey)
+select customer_id, order_line, (select customer_name from customer where 
+customer.customer_id = sales.customer_id)
+from sales
+order by customer_id;
+
+or (using- Joins)
+SELECT sales.customer_id, sales.order_line, customer.customer_name
+FROM sales
+JOIN customer ON sales.customer_id = customer.customer_id
+order by customer_id;
+
+---------------
+select Customers.CustomerName,Count(Orders.OrderID)
+from Customers
+left join Orders on Customers.CustomerID = Orders.CustomerID
+group by Customers.CustomerName
+
+or
+
+select CustomerName,(select Count(OrderID) from Orders where Customers.CustomerID = Orders.CustomerID)
+from Customers
+-------------
+3 table Join - all columns from sales & name,age, product name & category from customer,product
+select * from sales
+select * from customer
+select * from product
+
+select customer.customer_name, customer.age, product.product_name, product.category,sales.*
+from customer
+join sales on sales.customer_id = customer.customer_id
+join product on sales.product_id = product.product_id
