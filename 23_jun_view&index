@@ -1,0 +1,63 @@
+--- VIEW----
+create view logistics as
+select a.order_line, a.order_id, b.customer_name, b.city, b.state, b.country
+from sales as a
+left join customer as b
+on a.customer_id = b.customer_id
+order by a.order_line;
+
+select * from logistics
+
+drop view logistics;
+------------------
+Create a view named `HighValueCustomers` that shows the names and cities of customers who have made orders with an amount greater than $150.
+
+create view HighValueCustomers as
+select a.CustomerName,a.City
+from Customers as a
+join
+Orders as b on
+a.CustomerID = b.CustomerID
+where b.Amount > 150;
+-------------------
+---- INDEX----
+create index mon_idx
+on month_values(MM);
+
+drop index mon_idx;
+
+create index Product_idx
+on Orders(Product)
+
+in above ex. Orders -> table and Product -> Column
+---------------
+select * from sales
+
+create view Daily_Billing as
+select order_line, product_id, sales, discount
+from sales
+where order_date = '2014-01-03'
+
+
+select Order_date from sales
+order by order_date asc;
+
+drop view Daily_Billing;
+
+select * from Daily_Billing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
