@@ -1,0 +1,5 @@
+select customer_name, length(customer_name) as characters_num
+from customer
+where age > 30;
+
+
