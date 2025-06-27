@@ -1,0 +1,37 @@
+1) Ceil & Floor Function
+
+select order_line,sales,ceil(sales),floor(sales)
+from sales
+where discount > 0;
+
+--------------------
+2) Random ()
+find a random number between a=10 & b=50
+
+select random(), random()*40+10,floor(random()*40)+10;
+---------------------
+3) SET-SEED
+select setseed(0.5);
+
+select random();
+select random()
+------------------
+4) Round(Number) - use for rounding numbers
+select order_line,sales,Round(sales)
+from sales;
+---------
+5) Power(m,n)
+select order_line,sales,Round(sales)
+from sales
+-------------
+Qu 1. you are running a lottery for your customer. so pick a list of 5 lucky customers from customer table using random fun
+select * from customer
+order by random()
+limit 5;
+
+Qu.2)
+
+
+
+
+
