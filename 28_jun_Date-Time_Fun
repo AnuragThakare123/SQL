@@ -1,0 +1,33 @@
+select current_date, current_time, current_time(1),current_time(3),
+ current_timestamp;
+ ------------------------
+Retrieve the current date and time.
+ SELECT CURRENT_TIMESTAMP;
+ 
+ ---------Age_fun -------
+ Age_fun -> it calculate the difference between two time stamp
+  1) select age('2014-04-25','2014-01-01')
+
+  2) select order_line,order_date,ship_date,age(ship_date,order_date) as time_taken
+ from sales
+ order by time_taken desc;
+
+---------Extract_fun-----
+ SELECT EXTRACT(DAY FROM DATE '2014-04-25');
+ 
+ select extract(day from current_date);
+
+ select current_timestamp, extract(hour from current_timestamp)
+ 
+ SELECT order_date, ship_date, extract(epoch from (ship_date - order_date)) FROM sales;
+
+SELECT 
+  order_date, 
+  ship_date, 
+  (ship_date - order_date) AS days_diff
+FROM sales;
+
+
+select order_date, ship_date,
+(extract(epoch from ship_date)- extract(epoch from order_date)) as sec_taken
+from sales
