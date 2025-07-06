@@ -28,6 +28,17 @@ SELECT
 FROM sales;
 
 
+
 select order_date, ship_date,
 (extract(epoch from ship_date)- extract(epoch from order_date)) as sec_taken
 from sales
+------------- EX------
+SELECT age(current_date, '1939-06-04');
+
+select extract(year from age(current_date, '1939-06-04'))* 12 +
+extract (month from age(current_date,'1939-06-04')) as total_month; --- in Months only
+
+
+
+
+
