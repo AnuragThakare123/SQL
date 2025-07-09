@@ -1,1 +1,26 @@
+1) we can use like statement
+2) we can use Regx(regular expression) for that
+
+select * from customer
+where customer_name ~* '^a+[a-z\s]+$'            ----> for retrieving name start with 'a'
+
+
+
+select * from customer                          -----> for retrieving name start with either a,b,c or d
+where customer_name ~* '^[a-d\s]+[a-z\s]+$'
+or
+select * from customer
+where customer_name ~* '^(a|b|c|d)+[a-z\s]+$'
+
+// if we want to use like for above query then we have to use 4 like statment which makes query complex
+instead we can use regex fun for it to simplify the things.
+
+
+select * from customer
+where customer_name ~*'^[a-d\s][a-z]{3}\s[a-z]{4}$'     ---> for retrieving first and last name are exactly 4 characters, Name starts with either a, b,c or d
+
+// Find the valid email id in the name column
+select * from users
+where name ~*'[a-z0-9\.\-\_]+@[a-z0-9\-]+\.[a-z]{2,5}';
+
 
