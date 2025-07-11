@@ -1,1 +1,38 @@
+select customer_id, count(order_id)
+from sales
+group by customer_id; ----> to count differnet order related to perticular customer
+
+
+row_number
+select * from sales
+
+// combine table koh banaya
+
+select a.*,b.order_num,b.sales_tot,b.tot_quantity,b.tot_profit 
+from customer as a
+left join (select customer_id, count(distinct order_id)as order_num, sum(sales) as sales_tot, 
+sum(quantity) as tot_quantity, sum(profit) as tot_profit from sales group by customer_id) as b
+on a.customer_id = b.customer_id;
+
+
+// uss table koh naye table meh save kiyaa, yaa fir naam diya
+
+create table customer_order as (select a.*,b.order_num,b.sales_tot,b.tot_quantity,b.tot_profit 
+from customer as a
+left join (select customer_id, count(distinct order_id)as order_num, sum(sales) as sales_tot, 
+sum(quantity) as tot_quantity, sum(profit) as tot_profit from sales group by customer_id) as b
+on a.customer_id = b.customer_id);
+
+
+
+select * from customer_order;
+
+
+select customer_id, customer_name, state, order_num, row_number() over(partition by state order by order_num desc) as row_n
+from customer_order;
+
+select * from (select customer_id, customer_name, state, order_num, row_number() over(partition by state order by order_num desc) as row_n
+from customer_order) as a
+where a.row_n <= 3;
+------------------------------()------------
 
