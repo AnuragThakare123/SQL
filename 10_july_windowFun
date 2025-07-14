@@ -3,7 +3,7 @@ from sales
 group by customer_id; ----> to count differnet order related to perticular customer
 
 
-row_number
+1) row_number
 select * from sales
 
 // combine table koh banaya
@@ -35,4 +35,61 @@ select * from (select customer_id, customer_name, state, order_num, row_number()
 from customer_order) as a
 where a.row_n <= 3;
 ------------------------------()------------
+4) Ntile 
+select * from (select customer_id, customer_name, state, order_num, 
+row_number() over (partition by state order by order_num desc) as row_n,
+rank() over (partition by state order by order_num desc) as rank_n,
+dense_rank() over (partition by state order by order_num desc) as d_rank,
+ntile(1) over (partition by state order by order_num desc) as tile_n
+from customer_order) as a where a.tile_n = 1;
+
+Divide the employees from the `Employees` table into 4 equal salary groups (quartiles) and show their details.
+-> SELECT FirstName,LastName,Salary,
+       NTILE(4) OVER (ORDER BY Salary) AS Quartile
+   FROM Employees;
+
+--------------------------------()--------------
+5) Aggregate - 1) Avg()
+select customer_id, customer_name, state,sales_tot as revenue,
+avg(sales_tot) over (partition by state) as avg_revenue
+from customer_order
+
+- customer with less than average revenue
+select * from (
+select customer_id, customer_name, state,sales_tot as revenue,
+avg(sales_tot) over (partition by state) as avg_revenue
+from customer_order
+) as a where a.revenue < a.avg_revenue
+
+
+2) Count()
+select customer_id, customer_name, State, count(customer_id) 
+over (partition by State) as Tot_cust
+from customer_order
+
+3) Sum()
+
+select order_id, max(order_date) as order_date, max(customer_id) as customer_id,
+sum(sales) as sales from sales
+group by order_id
+
+create table order_rollup as select order_id, max(order_date) as order_date, max(customer_id) as customer_id,
+sum(sales) as sales from sales
+group by order_id
+
+
+create table order_rollup_state as select a.*,b.state
+from order_rollup as a
+left join customer as b
+on a.customer_id = b.customer_id
+
+select * from order_rollup_state
+
+select *,
+sum(sales) over (partition by state) as sales_tot_state
+from order_rollup_state
+
+--------------------------------()
+
+
 
