@@ -89,6 +89,30 @@ select *,
 sum(sales) over (partition by state) as sales_tot_state
 from order_rollup_state
 
+4) Running total -
+select *,
+sum(sales) over (partition by state) as sales_state_total,
+sum(sales) over (partition by state order by order_date) as running_total
+from order_rollup_state
+
+5) Lag/Lead
+select customer_id, order_date, order_id, sales,
+lag(sales,1) over (partition by customer_id order by order_date) as previous_sales,
+lag(order_id,1) over (partition by customer_id order by order_date) as previous_order_id
+from order_rollup_state;
+
+select customer_id, order_date, order_id, sales,
+lead(sales,1) over (partition by customer_id order by order_date) as previous_sales,
+lead(order_id,1) over (partition by customer_id order by order_date) as previous_order_id
+from order_rollup_state;
+
+SELECT OrderDate,
+       LAG(OrderDate) OVER (ORDER BY OrderDate) AS PreviousOrderDate,
+       LEAD(OrderDate) OVER (ORDER BY OrderDate) AS NextOrderDate
+FROM Orders;
+
+
+
 --------------------------------()
 
 
