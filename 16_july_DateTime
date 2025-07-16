@@ -1,0 +1,35 @@
+--- Conversion ---
+select sales, 'Total sales value for this order is' || to_char (sales,'9999.99') as message from sales;
+
+----- Date Conversion----
+select order_date, to_char(order_date,'DDMMYY') from sales;
+
+select order_date, to_char(order_date,'Month DD YY') from sales
+
+---------------
+Convert the salary of employees in the `Employees` table to strings with a currency symbol and two decimal places.
+SELECT FirstName, LastName,
+       '$' || ROUND(Salary, 2)
+FROM Employees;
+
+----- Conversion to Date -----
+to_date - converts string to date
+
+select to_date('2019/01/15','YYYY/MM/DD')
+
+select to_date('26122018', 'DDMMYYYY')
+
+------Conversion of to Number -------
+
+select to_number('1210.73','9999.99')
+select to_number('$1,210.73','L9999.99')
+
+Retrieve the birthdates of customers from the `Customers` table, converting them to DATE data type.
+SELECT CustomerName,
+       CAST(Birthdate AS DATE)
+FROM Customers;
+
+-------------- Cast -> Data type -----used to convert a value from one data type to another.
+SELECT CAST('2025-07-16' AS DATE);
+
+
